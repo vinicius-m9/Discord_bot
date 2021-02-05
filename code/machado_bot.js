@@ -42,7 +42,7 @@ client.on('message', message =>{
             message.channel.send(`S = {${x1}, ${x2}}`)
         } else if(delta === 0){
             const x = (-b)/(2*a)
-            message.channel.send(`S = {${x}`)
+            message.channel.send(`S = {${x}}`)
         } else {
             message.channel.send('Não possui raiz real.')
         }
