@@ -1,0 +1,12 @@
+{
+  "name": "machado_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "machado_bot.js",
+  "author": "Vinicius Machado Ribeiro",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "nodemon": "^2.0.7"
+  }
+}
