@@ -6,3 +6,4 @@
 - Multiplicação
 - Divisão
 - Bhaskara
+- Pitágoras
