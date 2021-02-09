@@ -21,23 +21,33 @@ client.on('message', message =>{
                 const a = Number(arr[2]), b = Number(arr[3]), c = Number(arr[4])
                 const delta = (b**2)-(4*a*c)
 
-                //Checa as condições de existência das raízes
-                if (delta > 0){
-                    const x1 = ((-b)+(Math.sqrt(delta)))/(2*a)
-                    const x2 = ((-b)-(Math.sqrt(delta)))/(2*a)
-                    message.channel.send(`S = {${x1}, ${x2}}`)
-                } else if(delta === 0){
-                    const x = (-b)/(2*a)
-                    message.channel.send(`S = {${x}}`)
+                //Checa a validade da função
+                if(isNaN(delta)){
+                    message.channel.send('Função inválida! Digite ". help" para saber mais.')
                 } else {
-                    message.channel.send('Não possui raiz real.')
+                   //Checa as condições de existência das raízes
+                    if (delta > 0){
+                        const x1 = ((-b)+(Math.sqrt(delta)))/(2*a)
+                        const x2 = ((-b)-(Math.sqrt(delta)))/(2*a)
+                        message.channel.send(`S = {${x1}, ${x2}}`)
+                    } else if(delta === 0){
+                        const x = (-b)/(2*a)
+                        message.channel.send(`S = {${x}}`)
+                    } else {
+                        message.channel.send('Não possui raiz real.')
+                    }
                 }
                 
             break
             case 'PITAGORAS':
                 const cat1 = Number(arr[2]), cat2 = Number(arr[3])
-
-                message.channel.send(`Hipotenusa = ${Math.sqrt((cat1**2)+(cat2**2))}`)
+                
+                //Checa a validade da função
+                if(isNaN(cat1) || isNaN(cat2)){
+                    message.channel.send('Função inválida! Digite ". help" para saber mais.')
+                } else {
+                    message.channel.send(`Hipotenusa = ${Math.sqrt((cat1**2)+(cat2**2))}`)
+                }
     
             break
             case 'HELP':
