@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
+const {token} = require('./config.json')
 
 //Evento que dispara ao logar o bot
 client.once('ready', () =>{
@@ -74,4 +75,4 @@ client.on('message', message =>{
     }
 })
 
-client.login('token')
+client.login(token)
