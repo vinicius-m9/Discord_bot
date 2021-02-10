@@ -10,7 +10,7 @@ client.once('ready', () =>{
 //Evento que dispara ao receber mensagem em canais de texto
 client.on('message', message =>{
     const arr = message.content.split(' ')
-    
+
     //Checa se o comando é uma função
     if(message.content.startsWith('.') & arr[1] !== undefined){
         const mark = arr[1].toUpperCase()
@@ -58,23 +58,23 @@ client.on('message', message =>{
                 message.channel.send('Função inválida! Digite ". help" para saber mais.')
         }
     //Checa se o comando é uma operação
-    } else if(Number(arr[0]) !== NaN){
+    } else if(isNaN(Number(arr[0])) === false){
         const [num1, operation, num2] = arr
 
         //Checa a operação que deve ser realizada
         switch (operation) {
             case '+':
                 message.channel.send(Number(num1)+Number(num2))
-                break
+            break
             case '-':
                 message.channel.send(Number(num1)-Number(num2))
-                break
+            break
             case '*':
                 message.channel.send(Number(num1)*Number(num2))
-                break
+            break
             case '/':
                 message.channel.send(Number(num1)/Number(num2))
-                break
+            break
         }
     }
 })
