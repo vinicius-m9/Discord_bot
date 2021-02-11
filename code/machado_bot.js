@@ -23,7 +23,7 @@ client.on('message', message =>{
 
                 //Checa a validade da função
                 if(isNaN(delta)){
-                    message.channel.send('Função inválida! Digite ". help" para saber mais.')
+                    message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
                 } else {
                    //Checa as condições de existência das raízes
                     if (delta > 0){
@@ -44,7 +44,7 @@ client.on('message', message =>{
                 
                 //Checa a validade da função
                 if(isNaN(cat1) || isNaN(cat2)){
-                    message.channel.send('Função inválida! Digite ". help" para saber mais.')
+                    message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
                 } else {
                     message.channel.send(`Hipotenusa = ${Math.sqrt((cat1**2)+(cat2**2))}`)
                 }
@@ -55,7 +55,7 @@ client.on('message', message =>{
                 '\nx + y\nx - y\nx * y\nx / y')
             break
             default:
-                message.channel.send('Função inválida! Digite ". help" para saber mais.')
+                message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
         }
     //Checa se o comando é uma operação
     } else if(isNaN(Number(arr[0])) === false){
