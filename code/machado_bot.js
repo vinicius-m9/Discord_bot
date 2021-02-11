@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
-const {token} = require('./config.json')
+const {token, prefix} = require('./config.json')
 
 //Evento que dispara ao logar o bot
 client.once('ready', () =>{
@@ -12,7 +12,7 @@ client.on('message', message =>{
     const arr = message.content.split(' ')
 
     //Checa se o comando é uma função
-    if(message.content.startsWith('.') & arr[1] !== undefined){
+    if(message.content.startsWith(prefix) & arr[1] !== undefined){
         const mark = arr[1].toUpperCase()
 
         //Checa a função que foi chamada
