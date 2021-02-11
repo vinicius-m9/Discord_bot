@@ -24,29 +24,27 @@ client.on('message', message =>{
                 //Checa a validade da função
                 if(isNaN(delta)){
                     message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
+                //Checa as condições de existência das raízes
+                } else if(delta > 0){
+                    const x1 = ((-b)+(Math.sqrt(delta)))/(2*a)
+                    const x2 = ((-b)-(Math.sqrt(delta)))/(2*a)
+                    message.channel.send(`S = {${x1}, ${x2}}`)
+                } else if(delta === 0){
+                    const x = (-b)/(2*a)
+                    message.channel.send(`S = {${x}}`)
                 } else {
-                   //Checa as condições de existência das raízes
-                    if (delta > 0){
-                        const x1 = ((-b)+(Math.sqrt(delta)))/(2*a)
-                        const x2 = ((-b)-(Math.sqrt(delta)))/(2*a)
-                        message.channel.send(`S = {${x1}, ${x2}}`)
-                    } else if(delta === 0){
-                        const x = (-b)/(2*a)
-                        message.channel.send(`S = {${x}}`)
-                    } else {
-                        message.channel.send('Não possui raiz real.')
-                    }
+                    message.channel.send('Não possui raiz real.')
                 }
                 
             break
             case 'PITAGORAS':
-                const cat1 = Number(arr[2]), cat2 = Number(arr[3])
+                const cateto1 = Number(arr[2]), cateto2 = Number(arr[3])
                 
                 //Checa a validade da função
-                if(isNaN(cat1) || isNaN(cat2)){
+                if(isNaN(cateto1) || isNaN(cateto2)){
                     message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
                 } else {
-                    message.channel.send(`Hipotenusa = ${Math.sqrt((cat1**2)+(cat2**2))}`)
+                    message.channel.send(`Hipotenusa = ${Math.sqrt((cateto1**2)+(cateto2**2))}`)
                 }
     
             break
@@ -57,8 +55,10 @@ client.on('message', message =>{
             default:
                 message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
         }
+    }
+    
     //Checa se o comando é uma operação
-    } else if(isNaN(Number(arr[0])) === false){
+    if(isNaN(Number(arr[0])) === false){
         const [num1, operation, num2] = arr
 
         //Checa a operação que deve ser realizada

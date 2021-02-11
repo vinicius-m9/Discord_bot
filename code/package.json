@@ -1,7 +1,5 @@
 {
   "name": "machado_bot",
-  "version": "1.0.0",
-  "description": "",
   "main": "machado_bot.js",
   "author": "Vinicius Machado Ribeiro",
   "license": "ISC",
