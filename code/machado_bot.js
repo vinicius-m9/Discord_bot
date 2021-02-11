@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const {token, prefix} = require('./config.json')
+const funcMath = require('./funcMath.js')
 
 //Evento que dispara ao logar o bot
 client.once('ready', () =>{
@@ -18,39 +19,17 @@ client.on('message', message =>{
         //Checa a função que foi chamada
         switch(mark){
             case 'BHASKARA':
-                const a = Number(arr[2]), b = Number(arr[3]), c = Number(arr[4])
-                const delta = (b**2)-(4*a*c)
+                message.channel.send(funcMath.bhaskara(arr[2], arr[3], arr[4]))
 
-                //Checa a validade da função
-                if(isNaN(delta)){
-                    message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
-                //Checa as condições de existência das raízes
-                } else if(delta > 0){
-                    const x1 = ((-b)+(Math.sqrt(delta)))/(2*a)
-                    const x2 = ((-b)-(Math.sqrt(delta)))/(2*a)
-                    message.channel.send(`S = {${x1}, ${x2}}`)
-                } else if(delta === 0){
-                    const x = (-b)/(2*a)
-                    message.channel.send(`S = {${x}}`)
-                } else {
-                    message.channel.send('Não possui raiz real.')
-                }
-                
             break
             case 'PITAGORAS':
-                const cateto1 = Number(arr[2]), cateto2 = Number(arr[3])
-                
-                //Checa a validade da função
-                if(isNaN(cateto1) || isNaN(cateto2)){
-                    message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
-                } else {
-                    message.channel.send(`Hipotenusa = ${Math.sqrt((cateto1**2)+(cateto2**2))}`)
-                }
-    
+                message.channel.send(funcMath.pitagoras(arr[2], arr[3]))
+
             break
             case 'HELP':
                 message.channel.send('Funções válidas:\n. BHASKARA a b c\n. PITAGORAS cateto1 cateto2' +
                 '\nx + y\nx - y\nx * y\nx / y')
+
             break
             default:
                 message.channel.send(`Função inválida! Digite "${prefix} help" para saber mais.`)
@@ -59,21 +38,21 @@ client.on('message', message =>{
     
     //Checa se o comando é uma operação
     if(isNaN(Number(arr[0])) === false){
-        const [num1, operation, num2] = arr
+        const [numero1, operation, numero2] = arr
 
         //Checa a operação que deve ser realizada
         switch (operation) {
             case '+':
-                message.channel.send(Number(num1)+Number(num2))
+                message.channel.send(funcMath.sum(numero1, numero2))
             break
             case '-':
-                message.channel.send(Number(num1)-Number(num2))
+                message.channel.send(funcMath.sub(numero1, numero2))
             break
             case '*':
-                message.channel.send(Number(num1)*Number(num2))
+                message.channel.send(funcMath.mult(numero1, numero2))
             break
             case '/':
-                message.channel.send(Number(num1)/Number(num2))
+                message.channel.send(funcMath.div(numero1, numero2))
             break
         }
     }
