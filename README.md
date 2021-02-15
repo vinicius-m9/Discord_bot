@@ -7,3 +7,11 @@
 - Divisão
 - Bhaskara
 - Pitágoras
+
+#### Como usar:
+
+execute os comandos abaixo:
+```
+npm install
+npm start
+```
